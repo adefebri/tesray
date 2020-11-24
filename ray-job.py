@@ -58,7 +58,6 @@ def wait_for_nodes(expected):
 def main():
     wait_for_nodes(4)
 
-class ESTOESnewsbulk():
     def __init__(self, *args, **kwargs):
         self.obj_lang = LanguageClassifier()
         self._RE_SENTENCES = re.compile(
@@ -81,17 +80,16 @@ class ESTOESnewsbulk():
         # print(final_lang)
         return {"lang": final_lang}
 
-    def process_data(self):
-        for message in consumer:
-            data = message.value
-            data = json.loads(data)
-            # print(json.dumps(data['raw']))
+    for message in consumer:
+        data = message.value
+        data = json.loads(data)
+        # print(json.dumps(data['raw']))
 
-            param = {
-            "text": data['raw']['content']
-                }
-            param['lang'] = self.language_detector(param)['lang']
-            print(param['lang'], "  |  ", param['text'][:50])
+        param = {
+        "text": data['raw']['content']
+            }
+        param['lang'] = self.language_detector(param)['lang']
+        print(param['lang'], "  |  ", param['text'][:50])
 
   
 
@@ -108,5 +106,4 @@ if __name__ == "__main__":
     redis_host = os.environ["RAY_HEAD_SERVICE_HOST"]
     ray.init(address=redis_host + ":6379")
     main()
-    classname = ESTOESnewsbulk()
-    classname.process_data()
+    
