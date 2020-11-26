@@ -33,7 +33,7 @@ sys.path.append(path_library)
 
 from dl.engine.language_detector.lang_classifier import LanguageClassifier
 
-ray.init(address='10.244.3.243:6379', log_to_driver=False)
+#ray.init(address='10.244.3.243:6379', log_to_driver=False)
 
 @ray.remote
 def gethostname(x):
