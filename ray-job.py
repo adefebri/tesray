@@ -33,6 +33,7 @@ sys.path.append(path_library)
 
 from dl.engine.language_detector.lang_classifier import LanguageClassifier
 
+ray.init(address='10.244.3.243:6379', log_to_driver=False)
 
 @ray.remote
 def gethostname(x):
@@ -105,6 +106,6 @@ if __name__ == "__main__":
                          "Is there a ray cluster running?")
     redis_host = os.environ["RAY_HEAD_SERVICE_HOST"]
     print(redis_host)
-    ray.init(address=redis_host + ":6380")
+    ray.init(address=redis_host + ":6379")
     main()
     
