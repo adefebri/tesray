@@ -104,6 +104,7 @@ if __name__ == "__main__":
         raise ValueError("RAY_HEAD_SERVICE_HOST environment variable empty."
                          "Is there a ray cluster running?")
     redis_host = os.environ["RAY_HEAD_SERVICE_HOST"]
+    print(redis_host)
     ray.init(address=redis_host + ":6379")
     main()
     
