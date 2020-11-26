@@ -105,6 +105,6 @@ if __name__ == "__main__":
                          "Is there a ray cluster running?")
     redis_host = os.environ["RAY_HEAD_SERVICE_HOST"]
     print(redis_host)
-    ray.init(address=redis_host + ":6379")
+    ray.init(address=redis_host + ":6380")
     main()
     
